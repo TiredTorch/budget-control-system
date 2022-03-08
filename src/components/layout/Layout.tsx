@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import './Layout.scss'
 
 export const Layout : FC = ({children}) => {
+
   return (
     <>
       <header>
