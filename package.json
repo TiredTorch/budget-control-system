@@ -1,4 +1,11 @@
 {
+    
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
+  
   "name": "budget_controlling_system",
   "version": "0.1.0",
   "private": true,
@@ -11,6 +18,7 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
     "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",

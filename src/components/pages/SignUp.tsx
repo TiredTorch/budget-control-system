@@ -2,9 +2,10 @@ import auth from 'base';
 import {createUserWithEmailAndPassword} from 'firebase/auth'
 import React, { FC, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { IAuth } from 'types/types';
 import './Forms.scss'
 
-export const SignUp : FC = () => {
+export const SignUp : FC<IAuth> = ({setIsAuth}) => {
 
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
@@ -13,7 +14,8 @@ export const SignUp : FC = () => {
   const handleSignUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-      navigate('/')
+      navigate('/home')
+      setIsAuth(true);
     } catch (error) {
       alert(error);
     }

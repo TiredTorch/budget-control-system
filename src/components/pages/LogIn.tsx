@@ -3,8 +3,9 @@ import {signInWithEmailAndPassword} from 'firebase/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import auth from 'base';
 import './Forms.scss'
+import { IAuth } from 'types/types';
 
-export const LogIn : FC = () => {
+export const LogIn : FC<IAuth> = ({setIsAuth}) => {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const navigate = useNavigate();
@@ -12,7 +13,8 @@ export const LogIn : FC = () => {
   const handleSignIn = async () => {
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-      navigate('/');
+      navigate('/home');
+      setIsAuth(true);
 
     } catch (error) {
       alert(error);
