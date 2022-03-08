@@ -1,5 +1,5 @@
 import React from 'react'
-import './LogIn.scss'
+import './Forms.scss'
 
 export const LogIn = () => {
   return (

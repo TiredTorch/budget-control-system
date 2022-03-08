@@ -1,5 +1,5 @@
 import { Layout } from 'components/layout/Layout';
-import { LogIn } from 'components/pages/LogIn';
+import { SignUp } from 'components/pages/SignUp';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss'
@@ -7,7 +7,7 @@ import './index.scss'
 ReactDOM.render(
     <React.StrictMode>
       <Layout>
-        <LogIn/>
+        <SignUp/>
       </Layout>
     </React.StrictMode>,
     document.getElementById('root'),
