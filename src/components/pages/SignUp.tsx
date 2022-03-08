@@ -1,16 +1,19 @@
 import auth from 'base';
 import {createUserWithEmailAndPassword} from 'firebase/auth'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import './Forms.scss'
 
-export const SignUp = () => {
+export const SignUp : FC = () => {
 
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSignUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+      navigate('/')
     } catch (error) {
       alert(error);
     }
@@ -33,7 +36,7 @@ export const SignUp = () => {
         <button onClick={handleSignUp}>Sign up</button>
       </div>
       <span>
-        Already have an account? <a href="#">Log in it!</a>
+        Already have an account? <Link to="/login">Log in it!</Link>
       </span>
     </section>
   )

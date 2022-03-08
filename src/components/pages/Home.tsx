@@ -1,10 +1,12 @@
-import React, {useState}  from 'react'
+import React, {FC, useState}  from 'react'
 import {signOut, onAuthStateChanged} from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
 import auth from 'base'
 
-export const Home = () => {
+export const Home : FC = () => {
 
   const [user, setUser] = useState<any>({});
+  const navigate = useNavigate()
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
@@ -12,6 +14,7 @@ export const Home = () => {
 
   const handleSignOut = async () => {
     await signOut(auth);
+    navigate('/login')
   }
 
   return (
