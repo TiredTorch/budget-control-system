@@ -4,14 +4,14 @@ import React, { useState } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import { routes } from './list'
 
-export default function AppRoutes() {
+export const AppRoutes = () => {
 
-  const [isAuth, setIsAuth] = useState<boolean>(false)
+  const [user, setUser] = useState<any>({})
 
   return (
       <Routes>
         {routes.map((route) => {
-          if (route.auth && !isAuth){
+          if (false){
             return false;
           }
           return(
@@ -20,7 +20,7 @@ export default function AppRoutes() {
               key={`route ${route.path}`}
               element={
                 <Layout>
-                  <route.component isAuth={isAuth} setIsAuth={setIsAuth}/>
+                  <route.component user={user} setUser={setUser}/>
                 </Layout>
               }
             />
@@ -31,7 +31,7 @@ export default function AppRoutes() {
           key='404'
           element={
             <Layout>
-              <PageNotFound isAuth={isAuth} setIsAuth={setIsAuth}/>
+              <PageNotFound user={user} setUser={setUser}/>
             </Layout>
           }
         />

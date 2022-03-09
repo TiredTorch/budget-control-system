@@ -1,4 +1,4 @@
-import AppRoutes from 'components/routes/AppRoutes';
+import { AppRoutes } from 'components/routes/AppRoutes';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';

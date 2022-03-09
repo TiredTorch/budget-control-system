@@ -1,4 +1,5 @@
+
 export type IAuth = {
-  isAuth: boolean;
-  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>;
+  user: any;
+  setUser: React.Dispatch<any>;
 }

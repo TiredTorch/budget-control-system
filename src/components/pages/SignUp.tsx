@@ -1,21 +1,25 @@
-import auth from 'base';
-import {createUserWithEmailAndPassword} from 'firebase/auth'
+import { auth } from 'base';
+import {createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth'
 import React, { FC, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { IAuth } from 'types/types';
 import './Forms.scss'
 
-export const SignUp : FC<IAuth> = ({setIsAuth}) => {
+export const SignUp : FC<IAuth> = ({setUser}) => {
 
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const navigate = useNavigate();
 
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  })
+
   const handleSignUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
       navigate('/home')
-      setIsAuth(true);
     } catch (error) {
       alert(error);
     }

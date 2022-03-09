@@ -1,20 +1,23 @@
 import React, { FC, useState } from 'react'
-import {signInWithEmailAndPassword} from 'firebase/auth'
+import {onAuthStateChanged, signInWithEmailAndPassword} from 'firebase/auth'
 import { Link, useNavigate } from 'react-router-dom'
-import auth from 'base';
+import { auth } from 'base';
 import './Forms.scss'
 import { IAuth } from 'types/types';
 
-export const LogIn : FC<IAuth> = ({setIsAuth}) => {
+export const LogIn : FC<IAuth> = ({setUser}) => {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const navigate = useNavigate();
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  })
 
   const handleSignIn = async () => {
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       navigate('/home');
-      setIsAuth(true);
 
     } catch (error) {
       alert(error);

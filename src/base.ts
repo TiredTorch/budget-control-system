@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore'
+
 
 const app = initializeApp({
   // apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -11,12 +13,11 @@ const app = initializeApp({
 
   apiKey: "AIzaSyCNnRWVcwKQow5O4HODuWvZ5nxCqWrN2dU",
   authDomain: "budget-control-8327f.firebaseapp.com",
-  projectId: "budget-control-8327f.firebaseapp.com",
+  projectId: "budget-control-8327f",
   storageBucket: "budget-control-8327f.appspot.com",
   messagingSenderId: "195343164821",
   appId: "1:195343164821:web:2180a905d1df2a616b829c"
 });
 
-const auth = getAuth(app)
-
-export default auth;
+export const auth = getAuth(app);
+export const db = getFirestore();
